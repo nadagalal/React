@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
 import Aux from '../../../hoc/Auxiliary'
-//import './Person.css';
+import withClass from '../../../hoc/WithClass';
+import classes from './Person.css';
 //import Radium  from 'radium';
 const person = (props) => {
     const StyleDiv = styled.div`
@@ -32,4 +33,4 @@ const person = (props) => {
        
         );
 }
-export default person;
+export default withClass(person,classes.Person);

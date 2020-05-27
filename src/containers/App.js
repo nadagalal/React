@@ -3,7 +3,8 @@ import './App.css';
 import Persons from '../components/persons/Persons';
 import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass'
+import withClass from '../hoc/WithClass'
+import Aux from '../hoc/Auxiliary'
 class App extends Component {
     constructor(props){
         super(props)
@@ -17,7 +18,8 @@ class App extends Component {
         ] ,
        otherState : "other value",
        showPersons : false ,
-       showCockpit : true
+       showCockpit : true ,
+       counter : 0
     }
 static getDerivedStateFromProps(props,state){
     console.log("in derived",props);
@@ -40,9 +42,14 @@ nameChangeHandler = (event,id) =>{
     updatedPerson.name = event.target.value;
     const updatedPersons = [...this.state.persons]
     updatedPersons[personIndex] = updatedPerson
-    this.setState({persons : updatedPersons})
+    this.setState((prevState , props) =>{
+        return{
+        persons : updatedPersons , 
+        counter : prevState.counter +1
+        }
+    });
 }
-togglePersonsHandler = () =>{
+ togglePersonsHandler = () =>{
 const doesShow = this.state.showPersons;
 this.setState ({showPersons :  !doesShow})
 }
@@ -73,7 +80,8 @@ render(){
 
     return (
         
-        <WithClass classes={classes.App}>
+      
+         <Aux>
         <button onClick ={() => {this.setState({showCockpit : false})
          }}>Remove Cockpit </button>
         {this.state.showCockpit ?
@@ -83,12 +91,13 @@ render(){
         personsLength= {this.state.persons.length}
         clicked = {this.togglePersonsHandler}></Cockpit> : null}
         {persons}
-        </WithClass>
+        </Aux>
+        
     
      
     );
   }
 }
 
-export default App;
+export default withClass(App,classes.App);
  
