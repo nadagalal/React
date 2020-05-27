@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import Aux from '../../../hoc/Auxiliary'
 //import './Person.css';
 //import Radium  from 'radium';
 const person = (props) => {
@@ -23,11 +24,11 @@ const person = (props) => {
     // }
     return(
         //<div className='Person' style={style}>
-        <div>
-        <p onClick = {props.click} > I am {props.name} , I have {props.age} years </p>
-        <p> {props.children} </p>
-        <input type="text" onChange = {props.change} value={props.name} /> 
-        </div>
+        <Aux>
+        <p key="i1" onClick = {props.click} > I am {props.name} , I have {props.age} years </p>
+        <p key="i2"> {props.children} </p>
+        <input key="i3" type="text" onChange = {props.change} value={props.name} /> 
+        </Aux>
        
         );
 }
