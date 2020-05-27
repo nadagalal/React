@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Aux from '../../../hoc/Auxiliary'
 import withClass from '../../../hoc/WithClass';
 import classes from './Person.css';
+import propTypes from 'prop-types'
 //import Radium  from 'radium';
 const person = (props) => {
     const StyleDiv = styled.div`
@@ -32,5 +33,11 @@ const person = (props) => {
         </Aux>
        
         );
+}
+person.propTypes = {
+    click : propTypes.func ,
+    name : propTypes.string,
+    age :propTypes.String,
+    change : propTypes.func
 }
 export default withClass(person,classes.Person);
