@@ -9,7 +9,8 @@ class Persons extends Component {
         //7yb2a ghlt
         if(nextProps.persons !== this.props.persons
             || nextProps.changed !== this.props.changed
-            || nextProps.clicked !== this.props.clicked){
+            || nextProps.clicked !== this.props.clicked
+            || nextProps.isAuthenticated !== this.props.isAuthenticated){
             return true
         }else{
             return false
@@ -27,7 +28,8 @@ class Persons extends Component {
             name={person.name}
             age= {person.age}
             key = {person.id} 
-            change = {(event) => this.props.changed(event,person.id)}/>
+            change = {(event) => this.props.changed(event,person.id)}
+            isAuth = {this.props.isAuthenticated}/>
          });
     }
 
