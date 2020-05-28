@@ -29,7 +29,7 @@ class Persons extends Component {
             age= {person.age}
             key = {person.id} 
             change = {(event) => this.props.changed(event,person.id)}
-            isAuth = {this.props.isAuthenticated}/>
+          />
          });
     }
 

@@ -4,6 +4,7 @@ import Aux from '../../../hoc/Auxiliary'
 import withClass from '../../../hoc/WithClass';
 import classes from './Person.css';
 import propTypes from 'prop-types'
+import AuthContext from '../../../context/auth-context'
 //import Radium  from 'radium';
 class Person extends Component {
     constructor(props){
@@ -18,7 +19,13 @@ class Person extends Component {
     return(
         //<div className='Person' style={style}>
         <Aux>
-        {this.props.isAuth ? <p> Authenticated</p> : <p> please login !</p>}
+        <AuthContext.Consumer>
+            {(context) => 
+                context.authenticated ? <p> Authenticated</p> 
+                : <p> please login !</p>
+            }
+        </AuthContext.Consumer>
+
         <p key="i1" onClick = {this.props.click} > I am {this.props.name} , I have {this.props.age} years </p>
         <p key="i2" > {this.props.children} </p>
         <input key="i3" 
